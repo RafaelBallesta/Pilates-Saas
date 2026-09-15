@@ -31,4 +31,15 @@ public class TenantController {
     public Tenant findById(@PathVariable Long id){
         return tenantService.findById(id);
     }
+
+    @PutMapping("/{id}")
+    public Tenant update(@PathVariable Long id, @Valid @RequestBody TenantDTO dto){
+        return tenantService.update(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
+        tenantService.delete(id);
+    }
 }

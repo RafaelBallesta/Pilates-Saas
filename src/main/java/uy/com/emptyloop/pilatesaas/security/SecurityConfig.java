@@ -12,18 +12,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
+        System.out.println(">>> SECURITY CONFIG CARGADA <<<");
+
         http
-            .csrf(csrf -> csrf.disable())
-            .formLogin(form -> form.disable())
-            .httpBasic(basic -> basic.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.POST, "/api/tenants").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/tenants").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/tenants/{}").permitAll()
-                .requestMatchers(HttpMethod.PUT, "/api/tenants").permitAll()
-                .requestMatchers(HttpMethod.DELETE, "/api/tenants").permitAll()
-                .anyRequest().authenticated()
-            );
+                .csrf(csrf -> csrf.disable())
+                .formLogin(form -> form.disable())
+                .httpBasic(basic -> basic.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()
+                );
 
         return http.build();
     }
