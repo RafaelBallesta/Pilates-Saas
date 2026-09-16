@@ -1,6 +1,6 @@
 package uy.com.emptyloop.pilatesaas.user;
 
-public enum UserRole {
+public enum Role {
     ADMIN,
     PROFESSOR,
     STUDENT
